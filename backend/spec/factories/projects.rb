@@ -1,9 +1,8 @@
 FactoryGirl.define do
   factory :project do
-    name "MyString"
-description "MyText"
-deadline "2016-02-08 15:07:23"
-goal "9.99"
+    name "The Xing Framework"
+    description "A neat new integrated web development platform."
+    deadline Date.today + 30.days
+    goal 20000.00
   end
-
 end
