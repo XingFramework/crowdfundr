@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # This should be the root route, but for the moment public/index.html
   # overrides root route even with an accept header
   resources :resources, :only => [:index], :controller => 'xing/controllers/root_resources'
-  resources :projects, :only => :show
+  resources :projects, :only => [:show, :index]
 
   #namespace :admin do
     #resources :froala_images, :only => [:index, :create]
