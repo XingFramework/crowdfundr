@@ -10,4 +10,8 @@ class ProjectListSerializer < Xing::Serializers::List
   def item_serializer_class
     ProjectSerializer
   end
+
+  def item_serializer_options
+  { only: :name }
+  end
 end
