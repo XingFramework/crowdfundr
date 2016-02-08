@@ -6,8 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module XingApp; end
-APP_MODULE = XingApp
+module Crowdfundr; end
+APP_MODULE = Crowdfundr
 
 module APP_MODULE
   class Application < Rails::Application
