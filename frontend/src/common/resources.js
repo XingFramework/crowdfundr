@@ -2,6 +2,7 @@ import RL from "relayer";
 import {Module, Config, applyAnnotation} from "a1atscript";
 import {backendUrl} from 'config';
 // import other resources from src/common/resources here
+import Project from 'resources/Project.js';
 
 class Resources extends RL.Resource {
 }
