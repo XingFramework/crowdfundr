@@ -1,2 +1,12 @@
-<h1>Xing Homepage</h1>
-<p>This will be the home page of whatever project is based on Xing.</p>
+<h1>Crowdfundr</h1>
+<p>Below you can see the list of projects available to be funded!</p>
+
+<table id='projects'>
+
+  <tr>
+    <th>Project Name</th>
+  </tr>
+  <tr ng-repeat="project in homepageShow.projects">
+    <td>{{project.name}}</td>
+  </tr>
+</table>
