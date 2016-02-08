@@ -17,7 +17,7 @@ export var backendUrl = (function(){
     return environment.backendUrl;
   }
 }());
-export var appName = "XING-BASE";
+export var appName = "Crowdfundr";
 export var configuration = { backendUrl, appName };
 
 if(environment.name){
