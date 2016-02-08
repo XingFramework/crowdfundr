@@ -1,7 +1,7 @@
 {
-  "name": "XING-BASE",
+  "name": "Crowdfundr",
   "version": "1.0.0-beta",
-  "repository": "git@github.com:XingFramework/xing-application-base.git",
+  "repository": "git@github.com:XingFramework/crowdfundr",
   "author": "Logical Reality Design",
   "homepage": "http://lrdesign.com",
   "scripts": {
