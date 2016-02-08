@@ -1,0 +1,24 @@
+// GET /projects
+//
+// Represents the list of all projects in the system.  As yet
+// it does not have a defined order.
+{
+  links: {
+    template: '/projects/{id}'
+    self: '/projects'
+  },
+
+  // The data in a /projects list resource is an array
+  // of other resources.
+  data: [
+    { links: { self: '/projects/1'},
+      data:  { name: 'The Xing Framework' }
+    },
+    { links: { self: '/projects/2'},
+      data:  { name: 'The Xing Book' }
+    },
+    { links: { self: '/projects/3'},
+      data:  { name: 'The Xing Website' }
+    }
+  ]
+}
