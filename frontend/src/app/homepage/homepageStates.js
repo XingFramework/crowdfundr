@@ -21,4 +21,10 @@ export class HomepageShowState {
     this.controllerAs = 'homepageShow';
     this.templateUrl = 'homepage/homepage-show.tpl.html';
   }
+
+  @Resolve("resources")
+  projects(resources){
+    return resources.projects().load();
+  }
+
 }
