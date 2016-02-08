@@ -1,8 +1,10 @@
 import {Controller} from 'a1atscript';
 
-@Controller('HomepageShowCtrl', [])
+@Controller('HomepageShowCtrl', ['projects'])
 export class HomepageShowController {
-  constructor() {}
+  constructor(projects) {
+    this.projects = projects;
+  }
 }
 
 @Controller('HomepageCtrl', [])
