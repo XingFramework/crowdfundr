@@ -8,6 +8,7 @@ class Resources extends RL.Resource {
 
 RL.Describe(Resources, (desc) => {
   // put top level links to resources here
+  desc.hasList('projects', Project, [])
 });
 
 // sets up default API as 'resources' service
