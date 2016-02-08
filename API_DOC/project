@@ -1,0 +1,16 @@
+// GET /project/{id}
+//
+// A project represents a single fundraising goal: what it's
+// for and how much money it wants. As yet, it has no related
+// resources.
+{
+  links: {
+    self: '/project/1'
+  },
+  data: {
+    name: 'The Xing Framework',
+    description: 'A block of text describing the project',
+    deadline: '2020-08-15T15:52:01+00:00',
+    goal: 20000.00
+  }
+}
