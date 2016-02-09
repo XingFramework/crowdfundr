@@ -4,8 +4,8 @@ import {State, Resolve, Inject} from "stateInjector";
 export class ProjectsState {
   constructor() {
     this.url = "/project/:id";
-    this.templateUrl = "project/project.tpl.html";
-    this.controller = "ProjectCtrl";
+    this.templateUrl = "projects/project.tpl.html";
+    this.controller = "ProjectsCtrl";
     this.controllerAs = "project";
   }
   @Resolve('resources', '$stateParams')
