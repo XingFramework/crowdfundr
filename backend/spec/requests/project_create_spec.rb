@@ -25,7 +25,7 @@ describe "POST /projects", type: :request do
     end
 
     it "returns 201 with the new address in the header 'Location'" do
-      pending "needs controller and mapper"
+      pending "needs mapper"
       json_post "projects/", json_body
       expect(response.status).to eq(201)
       expect(response.headers["Location"]).to
