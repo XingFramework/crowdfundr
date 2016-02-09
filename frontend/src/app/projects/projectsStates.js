@@ -8,4 +8,8 @@ export class ProjectsState {
     this.controller = "ProjectCtrl";
     this.controllerAs = "project";
   }
+  @Resolve('resources', '$stateParams')
+  project(resources, $stateParams) {
+    return resources.project($stateParams).load();
+  }
 }
