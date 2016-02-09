@@ -10,3 +10,4 @@ tmp/
 .envrc
 **/last_run
 **/*.log
+dump.rdb
