@@ -26,6 +26,8 @@ import RootCtrl from './rootController.js';
 
 import Resources from "common/resources.js";
 
+import Projects from "./projects/project.js";
+
 var app = new Module(appName, [
   'templates-app', 'templates-common', 'ui.router',
   'picardy.fontawesome',
@@ -43,7 +45,8 @@ var app = new Module(appName, [
   appConfig,
   RootStates,
   RootCtrl,
-  Resources
+  Resources,
+  Projects
 ]);
 
 var injector = new Injector(appName);
