@@ -9,6 +9,6 @@
   </tr>
   <tr ng-repeat="project in homepageShow.projects">
     <td>{{project.name}}</td>
-    <td><a ui-sref="root.inner.project(id: project.shortLink)">View</a></td>
+    <td><a ui-sref="root.inner.project({id: project.shortLink})">View</a></td>
   </tr>
 </table>
