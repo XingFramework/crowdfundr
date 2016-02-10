@@ -1,9 +1,10 @@
 import {Controller} from 'a1atscript';
 
-@Controller('HomepageShowCtrl', ['projects'])
+@Controller('HomepageShowCtrl', ['projects', 'CurrentUser'])
 export class HomepageShowController {
-  constructor(projects) {
+  constructor(projects, currentUser) {
     this.projects = projects;
+    this.currentUser = currentUser;
   }
 }
 

@@ -25,6 +25,7 @@ import * as RootStates from './rootStates.js';
 import RootCtrl from './rootController.js';
 
 import Resources from "common/resources.js";
+import CurrentUser from "common/currentUser.js";
 
 import Projects from "./projects/project.js";
 
@@ -46,6 +47,7 @@ var app = new Module(appName, [
   RootStates,
   RootCtrl,
   Resources,
+  CurrentUser,
   Projects
 ]);
 

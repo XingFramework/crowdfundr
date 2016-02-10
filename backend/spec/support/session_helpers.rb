@@ -63,5 +63,6 @@ RSpec.shared_steps "sign in with" do
 
   it "clicks Sign In" do
     click_button "Sign In"
+    expect(page).to have_xpath('//a[./text() = "Sign Out"]')
   end
 end

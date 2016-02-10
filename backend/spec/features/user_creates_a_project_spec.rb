@@ -2,6 +2,10 @@ require "spec_helper"
 
 RSpec.steps "Visitor Creates a New Project", js: :true, vcr: {} do
 
+  before :all do
+    @user = FactoryGirl.create(:user)
+  end
+
   let :name do
     "Pie in the Sky"
   end
@@ -20,9 +24,21 @@ RSpec.steps "Visitor Creates a New Project", js: :true, vcr: {} do
 
   it "visits root" do
     visit "/"
+    expect(page).to have_content("Below you can see the list")
   end
 
-  it "is on the homepage" do
+  it "does not display the new-project button" do
+    expect(page).not_to have_content("Create a New Project")
+  end
+
+  perform_steps "sign in with"
+
+  it "visits root" do
+    visit "/"
+    expect(page).to have_content("Below you can see the list")
+  end
+
+  it "does display the new-project button" do
     expect(page).to have_content("Create a New Project")
   end
 
