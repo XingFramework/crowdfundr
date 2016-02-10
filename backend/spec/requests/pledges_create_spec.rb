@@ -1,12 +1,15 @@
 require 'spec_helper'
 
 describe 'pledges#create', :type => :request do
+  let :project do
+    FactoryGirl.create(:project)
+  end
 
   describe 'as an anonymous user' do
     let :valid_data do
       {
         links: {
-          project: '1',
+          project: "#{project.id}",
           user: '',
           self: ''
         },
@@ -52,4 +55,23 @@ describe 'pledges#create', :type => :request do
       end
     end
   end
+
+  # TODO: Determine if a new route is needed for pledges
+  # created by logged-in users
+  #describe 'as a logged-in user' do
+    #let :data do
+      #valid_data.deep_merge(
+        #{
+          #:links => {
+            #:user => "#{user.id}"
+          #}
+        #}
+      #)
+    #end
+
+    #it "returns 201" do
+      #authenticated_json_post user, "pledges", json_body
+      #expect(response.status).to eq(201)
+    #end
+  #end
 end
