@@ -1,6 +1,10 @@
 require "spec_helper"
 
 describe "POST /projects", type: :request do
+  let :user do
+    FactoryGirl.create(:user)
+  end
+
   let :valid_data do
     {
       links: {
@@ -10,7 +14,8 @@ describe "POST /projects", type: :request do
         name: "User-Created Project",
         description: "This information was sent from the frontend",
         deadline: Time.now + 3.days,
-        goal: 30000.00
+        goal: 30000.00,
+        user_id: user.id,
       }
     }
   end

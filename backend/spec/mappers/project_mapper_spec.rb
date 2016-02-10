@@ -6,6 +6,10 @@ describe ProjectMapper, type: :mapper do
     Time.utc(2015, 3, 14, 9, 27)
   end
 
+  let :user do
+    FactoryGirl.create(:user)
+  end
+
   let :valid_data do
     {
       links: {
@@ -15,7 +19,8 @@ describe ProjectMapper, type: :mapper do
         name: "User-Created Project",
         description: "This information was sent from the frontend",
         deadline: time,
-        goal: 30000.00
+        goal: 30000.00,
+        user_id: user.id,
         }
       }
   end
