@@ -2,8 +2,6 @@ require 'spec_helper'
 
 describe "project#update", :type => :request do
 
-  let :user do FactoryGirl.create(:user) end
-
   let! :project do FactoryGirl.create(:project,
                                       :name => "The Xing Framework",
                                       :description => "Pretty cool framework!",
@@ -12,13 +10,15 @@ describe "project#update", :type => :request do
                                      )
   end
 
+  let :user do FactoryGirl.create(:user) end
+
   let :valid_data do
     {
       data: {
-        title: project.title,
+        name: "Xing Rules",
         description: "Awesome framework!",
         deadline: project.deadline,
-        goal: 30000.00
+        goal: project.goal
       }
     }
   end
@@ -28,12 +28,12 @@ describe "project#update", :type => :request do
   end
 
   describe "Successful update" do
-    describe "PUT projects/#{project.id}" do
+    describe 'PUT projects/#{project.id}' do
       let :json do valid_data.to_json end
 
       it "is a 200 success including the serialized object" do
 
-        json_put user, resource_url, json
+        json_put resource_url, json
 
         expect(response).to be_success
 
@@ -47,16 +47,14 @@ describe "project#update", :type => :request do
         expect(body).to have_json_path("data/deadline")
         expect(body).to have_json_path("data/goal")
       end
+
+      it "should update information" do
+        expect do
+          json_put resource_url, json
+        end.to change { project.reload.name }.to("Xing Rules")
+      end
     end
   end
-
-  it "should update information" do
-    expect do
-      json_put user, resource_url, json
-    end.to change { page.reload.description }.to("Awesome framework!")
-
-    expect do
-      json_put user, resource_url, json
-    end.to change { page.reload.goal }.to(30000.00)
-  end
 end
+
+
