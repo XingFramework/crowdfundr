@@ -1,5 +1,4 @@
 <h1>{{project.project.name}}</h1>
-<h1>{{project.project.name}}</h1>
 
 <dl>
   <dt>Description</dt>
@@ -11,3 +10,8 @@
   <dt>Goal</dt>
   <dd>{{project.project.goal}}</dd>
 </dl>
+
+<button ng-click="projectsEditCtrl.edit()">
+  Edit Project
+</button>
+<a ui-sref="root.homepage.show">Home</a>
