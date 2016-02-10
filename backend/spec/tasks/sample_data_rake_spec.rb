@@ -12,7 +12,6 @@ describe 'db:sample_data namespace rake task',
   end
 
   it "should succeed and create reasonable data" do
-    pending "fix in separate branch"
     Rake::Task["db:sample_data:load"].invoke
   end
 end
