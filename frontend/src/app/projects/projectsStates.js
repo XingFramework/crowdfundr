@@ -13,3 +13,13 @@ export class ProjectsState {
     return resources.project($stateParams).load();
   }
 }
+
+@State("root.inner.projectNew")
+export class ProjectNewState {
+  constructor() {
+    this.url = "/project/new";
+    this.templateUrl = "projects/project-new.tpl.html";
+    this.controller = "ProjectNewCtrl";
+    this.controllerAs = "projectCtrl";
+  }
+}

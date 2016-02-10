@@ -23,4 +23,16 @@ class ProjectsController < ApplicationController
       failed_to_process(mapper.errors)
     end
   end
+
+  # POST /projects
+  def create
+    mapper = ProjectMapper.new(parse_json)
+
+    if mapper.save
+      successful_create(project_path(mapper.project))
+    else
+      failed_to_process(mapper.errors)
+    end
+  end
+
 end

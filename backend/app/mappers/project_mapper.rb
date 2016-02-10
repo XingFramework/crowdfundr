@@ -12,6 +12,7 @@ class ProjectMapper < Xing::Mappers::Base
   end
 
   def update_record
-    project.assign_attributes(@project_data)
+    self.project.assign_attributes(@project_data)
   end
+
 end
