@@ -44,7 +44,6 @@ describe ProjectMapper, type: :mapper do
       expect(mapper.project).to be_a(Project)
       expect(mapper.project).to be_persisted
       expect(mapper.project.name).to eq("User-Created Project")
-      puts(mapper.project)
     end
   end
 end
