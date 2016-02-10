@@ -1,17 +1,17 @@
-<h1>{{project.project.name}}</h1>
+<h1>{{projectCtrl.project.name}}</h1>
 
 <dl>
   <dt>Description</dt>
-  <dd>{{project.project.description}}</dd>
+  <dd>{{projectCtrl.project.description}}</dd>
 
   <dt>Deadline</dt>
-  <dd>{{project.project.deadline}}</dd>
+  <dd>{{projectCtrl.project.deadline}}</dd>
 
   <dt>Goal</dt>
-  <dd>{{project.project.goal}}</dd>
+  <dd>{{projectCtrl.project.goal}}</dd>
 </dl>
 
-<button ng-click="projectsEditCtrl.edit()">
+<button ng-click="projectCtrl.edit()">
   Edit Project
 </button>
 <a ui-sref="root.homepage.show">Home</a>
