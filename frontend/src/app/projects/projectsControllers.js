@@ -1,28 +1,38 @@
 import {Controller} from 'a1atscript';
 
-@Controller('ProjectsCtrl', ['project'])
+@Controller('ProjectsCtrl', ['project', '$state'])
 export class ProjectsController {
-  constructor(project) {
+  constructor(project, $state) {
     this.project = project;
+    this.$state = $state;
+    this.formTemplate = 'projects/_form.tpl.html';
   }
 
   edit() {
-    $state.go()
+    this.$state.go("root.inner.projectEdit", {id: this.project.shortLink});
   }
 }
 
-@Controller('ProjectsEditCtrl', ['project'])
+@Controller('ProjectsEditCtrl', ['project', '$state'])
 export class ProjectsEditCtrl{
-  constructor(project) {
+  constructor(project, $state) {
     this.project = project;
-    this.formTemplate = 'projects/_form.tpl.html'
+    this.$state = $state;
+    this.formTemplate = 'projects/_form.tpl.html';
+    this.displayData();
   }
 
   save() {
     this.project.update().then((project) => {
       this.project = project;
-      return this.project;
+      this.displayData();
+      this.$state.go("root.inner.project", {id: this.project.shortLink});
     });
+  }
+
+  displayData() {
+    this.project.deadline = new Date(this.project.deadline);
+    this.project.goal = Number(this.project.goal);
   }
 }
 
