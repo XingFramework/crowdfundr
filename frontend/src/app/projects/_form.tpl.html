@@ -1,0 +1,24 @@
+<p>
+  <label for="name">Name</label>
+  <input type="text" id="name" ng-model="projectCtrl.project.name"></input>
+</p>
+<p>
+  <label for="description">Description</label>
+  <input type="text" id="description" ng-model="projectCtrl.project.description">
+  </input>
+</p>
+<p>
+  <label for="deadline">Deadline</label>
+  <input type="date" id="deadline" ng-model="projectCtrl.project.deadline">
+  </input>
+</p>
+<p>
+  <label for="goal">Goal</label>
+  <input type="number" id="goal" ng-model="projectCtrl.project.goal"></input>
+</p>
+
+<p>
+  <button ng-click="projectCtrl.save()">
+    Save
+  </button>
+</p>

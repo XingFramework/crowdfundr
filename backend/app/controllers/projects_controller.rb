@@ -12,4 +12,15 @@ class ProjectsController < ApplicationController
     render :json => ProjectSerializer.new(project)
   end
 
+  # POST /projects
+  def create
+    mapper = ProjectMapper.new(parse_json)
+
+    if mapper.save
+      successful_create(project_path(mapper.project))
+    else
+      failed_to_process(mapper.errors)
+    end
+  end
+
 end

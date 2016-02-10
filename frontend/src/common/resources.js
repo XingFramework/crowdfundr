@@ -9,7 +9,9 @@ class Resources extends RL.Resource {
 
 RL.Describe(Resources, (desc) => {
   // put top level links to resources here
-  desc.hasList('projects', Project, []);
+  var projects = desc.hasList('projects', Project, []);
+  projects.linkTemplate = "project";
+  projects.canCreate = true;
   var project = desc.hasOne('project', Project);
   project.templated = true;
 });
