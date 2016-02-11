@@ -19,7 +19,7 @@ RSpec.steps "Visitor Creates a New Project", js: :true, vcr: {} do
   end
 
   let :goal do
-    31415.92
+    31415
   end
 
   it "visits root" do
@@ -61,7 +61,7 @@ RSpec.steps "Visitor Creates a New Project", js: :true, vcr: {} do
     click_button "Save"
   end
 
-  skip "redirects to project detail page" do
+  it "redirects to project detail page" do
     expect(page).to have_content("Pie in the Sky")
   end
 end

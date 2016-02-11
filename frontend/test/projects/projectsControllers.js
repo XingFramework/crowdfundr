@@ -5,7 +5,7 @@ describe("Projects Controllers", function() {
 
   describe("ProjectNewController", function() {
     var controller
-    var mockRelayer, mockResources, mockState;
+    var mockRelayer, mockResources, mockState, mockCurrentUser;
 
     beforeEach(function() {
       mockRelayer = jasmine.createSpyObj("mockRelayer", ["new", "create"]);
@@ -16,7 +16,14 @@ describe("Projects Controllers", function() {
 
       mockState = jasmine.createSpyObj("mockState", ["go"]);
 
-      controller = new ProjectNewController(mockResources, mockState);
+      mockCurrentUser = {
+        user: {
+          id: 1
+        }
+      }
+
+      controller = new ProjectNewController(mockResources, mockState,
+                                            mockCurrentUser);
     });
 
     describe("on initialization", function() {
@@ -30,6 +37,7 @@ describe("Projects Controllers", function() {
         var mockPromise, mockProject;
 
         beforeEach(function() {
+          controller.project = {};
           mockProject = {shortLink: "3"};
           mockPromise = Promise.resolve(mockProject);
           mockRelayer.create.and.returnValue(mockPromise);

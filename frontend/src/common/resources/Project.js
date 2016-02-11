@@ -6,4 +6,5 @@ RL.Describe(Project, (desc) => {
   desc.property("description", "");
   desc.property("deadline", "");
   desc.property("goal", "");
+  desc.property("userId", 0);
 });

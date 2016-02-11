@@ -30,6 +30,7 @@ describe "POST /projects", type: :request do
         description: "This information was sent from the frontend",
         deadline: Time.now + 3.days,
         goal: 30000.00,
+        user_id: user.id + 1,
       }
     }
   end
@@ -52,16 +53,15 @@ describe "POST /projects", type: :request do
       end
     end
 
-    context "on an unsuccessful create" do
+    context "with an incorrect user_id" do
       let :data do
         invalid_data
       end
 
-      it "returns a 422 with errors in the body" do
+      it "returns a 401 (unauthorized)" do
         authenticated_json_post user, "projects/", json_body
 
-        expect(response.status).to eq(422)
-        expect(response.body).to be_json_eql("\"can't be blank\"").at_path("data/user/message")
+        expect(response.status).to eq(401)
       end
     end
   end
