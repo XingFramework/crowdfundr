@@ -1,7 +1,7 @@
-import {ProjectsState} from "../../src/app/projects/projectsStates.js";
+import {ProjectState} from "../../src/app/projects/projectsStates.js";
 
-describe("ProjectsState", function() {
-  var projectsState,
+describe("ProjectState", function() {
+  var projectState,
     mockResources,
     mockProjectResource,
     mockStateParams;
@@ -17,11 +17,11 @@ describe("ProjectsState", function() {
       project: jasmine.createSpy('project').and.returnValue(mockProjectResource)
     }
 
-    projectsState = new ProjectsState();
+    projectState = new ProjectState();
   });
 
   it("should resolve a project", function() {
-    projectsState.project(mockResources, mockStateParams);
+    projectState.project(mockResources, mockStateParams);
     expect(mockResources.project).toHaveBeenCalledWith({id: '5'})
   });
 });

@@ -1,7 +1,33 @@
-import { ProjectNewController }
-  from "../../src/app/projects/projectsControllers.js";
+import { ProjectEditController, ProjectNewController } from "../../src/app/projects/projectsControllers.js";
 
-describe("Projects Controllers", function() {
+describe('Projects Controllers', function() {
+
+  var controller, mockProject;
+
+  describe('ProjectEditCtrl', function() {
+    var mockPromise,
+        mockProject;
+
+    beforeEach(function() {
+      mockPromise = function() {
+        return Promise.resolve("");
+      };
+      mockProject = {
+        update() { return mockPromise }
+      };
+      controller = new ProjectEditCtrl(mockProject);
+    });
+
+    describe('save', function() {
+      describe('on success', function() {
+        beforeEach(function(done) {
+          controller.save().then(() => {
+            done();
+          });
+        });
+      })
+    });
+  })
 
   describe("ProjectNewController", function() {
     var controller

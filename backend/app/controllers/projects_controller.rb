@@ -12,6 +12,18 @@ class ProjectsController < ApplicationController
     render :json => ProjectSerializer.new(project)
   end
 
+  #PUT /projects/{id}
+  def update
+    project = Project.find(params[:id])
+    mapper = ProjectMapper.new(json_body, project.id)
+
+    if mapper.save
+      render :json => ProjectSerializer.new(mapper.project)
+    else
+      failed_to_process(mapper.errors)
+    end
+  end
+
   # POST /projects
   def create
     mapper = ProjectMapper.new(json_body)
