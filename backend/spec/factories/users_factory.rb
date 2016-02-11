@@ -21,7 +21,9 @@ FactoryGirl.define do
     confirmed_at Time.now
   end
 
-  factory :user, :parent => :raw_user, :traits => [:confirmed]
+  factory :user, :parent => :raw_user, :traits => [:confirmed] do
+    role_name 'RegisteredUser'
+  end
 
   factory :unconfirmed_user, :parent => :raw_user
   factory :confirmed_user, :parent => :user, :traits => [:confirmed]

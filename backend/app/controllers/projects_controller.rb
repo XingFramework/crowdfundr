@@ -14,7 +14,9 @@ class ProjectsController < ApplicationController
 
   # POST /projects
   def create
-    mapper = ProjectMapper.new(parse_json)
+    mapper = ProjectMapper.new(json_body)
+    mapper.perform_mapping
+    authorize! :create, mapper.project
 
     if mapper.save
       successful_create(project_path(mapper.project))
