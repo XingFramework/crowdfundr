@@ -20,7 +20,7 @@ export class ProjectNewState {
     this.url = "/project/new";
     this.templateUrl = "projects/project-new.tpl.html";
     this.controller = "ProjectNewCtrl";
-    this.controllerAs = "projectCtrl";
+    this.controllerAs = "projectsCtrl";
   }
 }
 
