@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   resources :resources, :only => [:index], :controller => 'xing/controllers/root_resources'
   resources :projects, :only => [:show, :index]
 
+  resources :projects do
+    resource :pledges, :only => [:update], :controller => 'project_pledges'
+  end
+
   #namespace :admin do
     #resources :froala_images, :only => [:index, :create]
     #post "/froala_images/delete", :to => 'froala_images#destroy'
