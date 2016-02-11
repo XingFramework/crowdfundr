@@ -1,7 +1,7 @@
 import {Controller} from 'a1atscript';
 
-@Controller('ProjectsCtrl', ['project', '$state'])
-export class ProjectsController {
+@Controller('ProjectCtrl', ['project', '$state'])
+export class ProjectController {
   constructor(project, $state) {
     this.project = project;
     this.$state = $state;
@@ -13,8 +13,8 @@ export class ProjectsController {
   }
 }
 
-@Controller('ProjectsEditCtrl', ['project', '$state'])
-export class ProjectsEditCtrl{
+@Controller('ProjectEditCtrl', ['project', '$state'])
+export class ProjectEditController{
   constructor(project, $state) {
     this.project = project;
     this.$state = $state;

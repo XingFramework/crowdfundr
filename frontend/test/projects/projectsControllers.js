@@ -1,10 +1,10 @@
-import { ProjectsEditCtrl, ProjectNewController } from "../../src/app/projects/projectsControllers.js";
+import { ProjectEditController, ProjectNewController } from "../../src/app/projects/projectsControllers.js";
 
 describe('Projects Controllers', function() {
 
   var controller, mockProject;
 
-  describe('ProjectsEditCtrl', function() {
+  describe('ProjectEditCtrl', function() {
     var mockPromise,
         mockProject;
 
@@ -15,7 +15,7 @@ describe('Projects Controllers', function() {
       mockProject = {
         update() { return mockPromise }
       };
-      controller = new ProjectsEditCtrl(mockProject);
+      controller = new ProjectEditCtrl(mockProject);
     });
 
     describe('save', function() {
@@ -28,9 +28,6 @@ describe('Projects Controllers', function() {
       })
     });
   })
-})
-
-describe("Projects Controllers", function() {
 
   describe("ProjectNewController", function() {
     var controller
