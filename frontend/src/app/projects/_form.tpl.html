@@ -1,24 +1,23 @@
-<p>
+<div class='xng-form-row'>
   <label for="name">Name</label>
   <input type="text" id="name" ng-model="projectsCtrl.project.name"></input>
-</p>
-<p>
+</div>
+<div class='xng-form-row'>
   <label for="description">Description</label>
-  <input type="text" id="description" ng-model="projectsCtrl.project.description">
-  </input>
-</p>
-<p>
+  <textarea type="text" id="description" ng-model="projectsCtrl.project.description">
+  </textarea>
+</div>
+<div class='xng-form-row'>
   <label for="deadline">Deadline</label>
   <input type="date" id="deadline" ng-model="projectsCtrl.project.deadline">
   </input>
-</p>
-<p>
+</div>
+<div class='xng-form-row'>
   <label for="goal">Goal</label>
   <input type="number" step="any" id="goal" ng-model="projectsCtrl.project.goal"></input>
-</p>
-
-<p>
+</div>
+<div class='xng-form-row'>
   <button ng-click="projectsCtrl.save()">
     Save
   </button>
-</p>
+</div>
