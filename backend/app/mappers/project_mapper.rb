@@ -8,7 +8,6 @@ class ProjectMapper < Xing::Mappers::Base
 
   def assign_values(data_hash)
     @project_data = data_hash
-
     super
   end
 
