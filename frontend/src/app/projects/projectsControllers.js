@@ -1,11 +1,16 @@
 import {Controller} from 'a1atscript';
 
-@Controller('ProjectCtrl', ['project', '$state'])
+@Controller('ProjectCtrl', ['project', '$state', 'CurrentUser'])
 export class ProjectController {
-  constructor(project, $state) {
+  constructor(project, $state, currentUser) {
     this.project = project;
     this.$state = $state;
+    this.currentUser = currentUser;
     this.formTemplate = 'projects/_form.tpl.html';
+  }
+
+  currentUserCanEdit() {
+    return this.currentUser.user && this.currentUser.user.id == this.project.userId
   }
 
   edit() {

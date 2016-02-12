@@ -5,13 +5,13 @@
   <dd>{{projectCtrl.project.description}}</dd>
 
   <dt>Deadline</dt>
-  <dd>{{projectCtrl.project.deadline}}</dd>
+  <dd>{{projectCtrl.project.deadline | date:"medium"}}</dd>
 
   <dt>Goal</dt>
-  <dd>{{projectCtrl.project.goal}}</dd>
+  <dd>{{projectCtrl.project.goal | currency : "$" : 2}}</dd>
 </dl>
 
-<button ng-click="projectCtrl.edit()">
+<button ng-click="projectCtrl.edit()" ng-show="projectCtrl.currentUserCanEdit()">
   Edit Project
 </button>
 <a ui-sref="root.homepage.show">Home</a>

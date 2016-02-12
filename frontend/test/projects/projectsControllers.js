@@ -1,10 +1,75 @@
-import { ProjectEditController, ProjectNewController } from "../../src/app/projects/projectsControllers.js";
+import { ProjectController, ProjectEditController, ProjectNewController }
+  from "../../src/app/projects/projectsControllers.js";
 
 describe('Projects Controllers', function() {
+    var controller
+
+  describe("ProjectController", function(){
+    var mockProject, mockState, mockCurrentUser;
+
+    beforeEach(function() {
+      mockProject = {};
+      mockState = jasmine.createSpyObj("mockState", ["go"]);
+      mockCurrentUser = {}
+
+      controller = new ProjectController(mockProject, mockState, mockCurrentUser)
+    });
+
+    describe("edit()", function() {
+      it("calls go with the correct arguments", function() {
+        controller.project = {shortLink: "777"}
+
+        controller.edit();
+
+        expect(mockState.go).
+          toHaveBeenCalledWith("root.inner.projectEdit", {id: "777"});
+      });
+    });
+
+    describe("currentUserCanEdit(),", function() {
+      describe("when current user is falsy,", function() {
+        beforeEach(function() {
+          controller.currentUser = { user: null };
+          controller.project = { userId: 23 }
+        });
+
+        it ("returns falsy", function() {
+          expect(controller.currentUserCanEdit()).toBeFalsy();
+        });
+      });
+
+      describe("when current user is present", function() {
+        beforeEach(function() {
+          controller.currentUser = {
+            user: { id: 23 }
+          };
+        });
+
+        describe("and matches the project's user,", function() {
+          beforeEach(function() {
+            controller.project = { userId: 23 };
+          });
+
+          it("returns true", function() {
+            expect(controller.currentUserCanEdit()).toEqual(true);
+          });
+        });
+
+        describe("and doesn't match the project's user,", function() {
+          beforeEach(function() {
+            controller.project = { userId: 42 };
+          });
+
+          it("returns false", function() {
+            expect(controller.currentUserCanEdit()).toEqual(false);
+          });
+        });
+      });
+    });
+  });
 
   describe('ProjectEditController', function() {
-    var controller,
-        mockProject,
+    var mockProject,
         mockState;
 
     describe('save', function() {
@@ -20,13 +85,12 @@ describe('Projects Controllers', function() {
 
         it ("calls go with the correct arguments", function() {
           expect(mockState.go).toHaveBeenCalledWith("root.inner.project", {id: "1"});
-        })
-      })
-    })
-  })
+        });
+      });
+    });
+  });
 
   describe("ProjectNewController", function() {
-    var controller
     var mockRelayer, mockResources, mockState, mockCurrentUser;
 
     beforeEach(function() {
@@ -42,7 +106,7 @@ describe('Projects Controllers', function() {
         user: {
           id: 1
         }
-      }
+      };
 
       controller = new ProjectNewController(mockResources, mockState,
                                             mockCurrentUser);
