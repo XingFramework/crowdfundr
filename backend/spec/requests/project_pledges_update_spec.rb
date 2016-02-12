@@ -86,9 +86,9 @@ describe 'project_pledges#update', :type => :request do
         end
 
         it "returns 422" do
-          json_post "project/#{project.id}/pledges", json_body
+          json_put "projects/#{project.id}/pledges", json_body
           expect(response.status).to eq(422)
-          expect(response.body).to eq("{\"data\":{\"0\":{\"links\":{\"project\":{\"type\":\"required\",\"message\":\"can't be blank\"}}}}}")
+          expect(response.body).to eq("{\"data\":{\"pledges\":{\"0\":{\"project\":{\"type\":\"required\",\"message\":\"can't be blank\"}}}}}")
         end
       end
     end

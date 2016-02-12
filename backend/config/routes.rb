@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :resources, :only => [:index], :controller => 'xing/controllers/root_resources'
   resources :projects, :only => [:show, :index, :create]
 
+  resources :pledges, :only => :show
   resources :projects do
     resource :pledges, :only => [:update], :controller => 'project_pledges'
   end
