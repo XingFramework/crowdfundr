@@ -23,7 +23,7 @@ export class ProjectEditController{
   }
 
   save() {
-    this.project.update().then((project) => {
+    return this.project.update().then((project) => {
       this.project = project;
       this.displayData();
       this.$state.go("root.inner.project", {id: this.project.shortLink});

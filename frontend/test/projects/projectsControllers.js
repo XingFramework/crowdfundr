@@ -2,31 +2,27 @@ import { ProjectEditController, ProjectNewController } from "../../src/app/proje
 
 describe('Projects Controllers', function() {
 
-  var controller, mockProject;
-
-  describe('ProjectEditCtrl', function() {
-    var mockPromise,
-        mockProject;
-
-    beforeEach(function() {
-      mockPromise = function() {
-        return Promise.resolve("");
-      };
-      mockProject = {
-        update() { return mockPromise }
-      };
-      controller = new ProjectEditCtrl(mockProject);
-    });
+  describe('ProjectEditController', function() {
+    var controller,
+        mockProject,
+        mockState;
 
     describe('save', function() {
       describe('on success', function() {
+
         beforeEach(function(done) {
-          controller.save().then(() => {
-            done();
-          });
+          mockProject = { update() { return Promise.resolve(this) },
+                          shortLink: '1' };
+          mockState = jasmine.createSpyObj("mockState", ["go"]);
+          controller = new ProjectEditController(mockProject, mockState);
+          controller.save().then(() => done());
         });
+
+        it ("calls go with the correct arguments", function() {
+          expect(mockState.go).toHaveBeenCalledWith("root.inner.project", {id: "1"});
+        })
       })
-    });
+    })
   })
 
   describe("ProjectNewController", function() {
