@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resource :pledges, :only => [:update], :controller => 'project_pledges'
   end
 
+  resources :users, :only => [:show]
+
   #namespace :admin do
     #resources :froala_images, :only => [:index, :create]
     #post "/froala_images/delete", :to => 'froala_images#destroy'
