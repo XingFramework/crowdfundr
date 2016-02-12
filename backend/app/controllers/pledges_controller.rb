@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+class PledgesController < ApplicationController
   def show
   end
 end
