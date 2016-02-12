@@ -6,7 +6,6 @@ export class ProjectController {
     this.project = project;
     this.$state = $state;
     this.currentUser = currentUser;
-    this.formTemplate = 'projects/_form.tpl.html';
   }
 
   currentUserCanEdit() {

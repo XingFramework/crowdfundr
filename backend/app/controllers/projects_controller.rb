@@ -15,7 +15,10 @@ class ProjectsController < ApplicationController
   #PUT /projects/{id}
   def update
     project = Project.find(params[:id])
+    authorize! :edit, project
     mapper = ProjectMapper.new(json_body, project.id)
+    mapper.perform_mapping
+    authorize! :edit, mapper.project
 
     if mapper.save
       render :json => ProjectSerializer.new(mapper.project)

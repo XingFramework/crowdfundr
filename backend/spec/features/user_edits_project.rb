@@ -2,11 +2,34 @@ require "spec_helper"
 
 RSpec.steps "Visitor Creates a New Project", js: :true, vcr: {} do
   before :all do
-    @user = FactoryGirl.build(:user)
+    @user = FactoryGirl.create(:user)
     @project = FactoryGirl.create(:project,
                                  :name => "Xing Framework",
-                                 :description => "Cool")
+                                 :description => "Cool",
+                                 :user => @user)
   end
+
+  it "visits root" do
+    visit "/"
+  end
+
+  it "shows a list of projects" do
+    expect(page).to have_content("Xing Framework")
+  end
+
+  it "clicks on a project" do
+    click_link("View")
+  end
+
+  it "shows the experience page" do
+    expect(page).to have_content("Cool")
+  end
+
+  it "does not display the edit button" do
+    expect(page).not_to have_content("Edit Project")
+  end
+
+  perform_steps "sign in with"
 
   it "visits root" do
     visit "/"
