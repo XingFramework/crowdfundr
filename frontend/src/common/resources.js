@@ -1,8 +1,21 @@
 import RL from "relayer";
 import {Module, Config, applyAnnotation} from "a1atscript";
 import {backendUrl} from 'config';
-// import other resources from src/common/resources here
-import Project from 'resources/Project.js';
+
+class Project extends RL.Resource{}
+RL.Describe(Project, (desc) => {
+  desc.hasList("pledges", Pledge, []);
+  desc.property("name", "");
+  desc.property("description", "");
+  desc.property("deadline", "");
+  desc.property("goal", "");
+});
+
+class Pledge extends RL.Resource{}
+RL.Describe(Pledge, (desc) => {
+  desc.property("amount", "");
+  desc.property("comment", "");
+});
 
 class Resources extends RL.Resource {
 }
@@ -14,6 +27,10 @@ RL.Describe(Resources, (desc) => {
   projects.canCreate = true;
   var project = desc.hasOne('project', Project);
   project.templated = true;
+
+  var pledges = desc.hasList('pledges', Pledge, []);
+  pledges.linkTemplate = "project_pledges";
+  pledges.canCreate = true;
 });
 
 // sets up default API as 'resources' service

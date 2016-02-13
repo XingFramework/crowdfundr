@@ -8,9 +8,15 @@ export class ProjectState {
     this.controller = "ProjectCtrl";
     this.controllerAs = "projectCtrl";
   }
+
   @Resolve('resources', '$stateParams')
   project(resources, $stateParams) {
     return resources.project($stateParams).load();
+  }
+
+  @Resolve('project')
+  pledges(project) {
+    return project.pledges().load();
   }
 }
 
