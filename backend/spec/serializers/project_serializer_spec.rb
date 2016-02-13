@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe ProjectSerializer, :type => :serializer do
-
   let! :project do
-    FactoryGirl.create(:project,
+    FactoryGirl.create(:project_with_pledges,
+                       :pledges_count => 3,
                        :name => "The Xing Framework",
                        :description => "Cool new web framework!",
                        :deadline => Date.today + 30.days,
@@ -27,6 +27,7 @@ describe ProjectSerializer, :type => :serializer do
       expect(json).to be_json_string("Cool new web framework!").at_path("data/description")
       expect(json).to be_json_string(project.deadline.as_json).at_path("data/deadline")
       expect(json).to be_json_string("15000.00").at_path("data/goal")
+      expect(json).to have_json_size(3).at_path("data/pledges/data")
     end
   end
 end
