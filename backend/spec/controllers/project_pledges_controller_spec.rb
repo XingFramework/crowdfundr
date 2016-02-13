@@ -33,6 +33,16 @@ describe ProjectPledgesController do
   end
 
   describe 'as an anonymous user' do
+    describe "show" do
+      it "should use the correct serializer and succeed" do
+        allow(Project).to receive(:find).with("1").and_return(project)
+        expect(ProjectPledgesSerializer).to receive(:new).with(project).and_return(serializer)
+        expect(controller).to receive(:render).with(:json => serializer).and_call_original
+        get :show, :project_id => project.id
+        expect(response).to be_success
+      end
+    end
+
     describe 'update' do
       it "should update with scene mapper and pass the JSON to it" do
         expect(ProjectPledgesMapper).to receive(:new).with(json, 1).and_return(mock_mapper)

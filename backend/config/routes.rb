@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :pledges, :only => :show
   resources :projects do
-    resource :pledges, :only => [:update], :controller => 'project_pledges'
+    resource :pledges, :only => [:show, :update], :controller => 'project_pledges'
   end
 
   resources :users, :only => [:show]
